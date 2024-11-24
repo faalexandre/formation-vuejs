@@ -1,14 +1,18 @@
 <script setup>
 import {ref} from 'vue'
 
-// var
-let msg = ref('luanda','Modifier le nombre')
+
+//var
+const msg = ref('Luanda terra dos braços aberto')
 const count = ref(0)
-const changeMsg = ()=>{
-  msg.value = 'Faustino'
+
+
+//Func
+const incrementCount = () => {
+  count.value++
 }
 
-const resetcount = ()=>{
+const resetCount = () => {
   count.value = 0
 }
 
@@ -16,16 +20,21 @@ const resetcount = ()=>{
 
 <template>
   <main>
-<h1 @click="changeMsg">{{ msg }}</h1>
-<h2>Nombre = {{ count }}</h2>
-<button @click="count++">Incrémenter le nombre</button>
-<button @click="resetcount">Réinitialiser le nombre</button>
+<h1>{{ msg }}</h1>
+<h2 :class="count < 10 ? 'green':  'red'"> Nombre = {{ count }}</h2>
+
+<button @click="incrementCount">Incrémenter le nombre</button>
+<button @click="resetCount">Réinitialiser le nombre</button>
+
   </main>
 </template>
 
 <style scoped>
-h1:hover {
-  cursor: pointer;
+.green {
+  color: green;
 }
 
+.red {
+  color: red;
+}
 </style>
